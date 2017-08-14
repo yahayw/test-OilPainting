@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .wrap {
+            background-color: #edc;
+            width: 1000px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .wrap h2 {
+            border: 1px solid #cde;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .wrap img {
+            width: 270px;
+            height: 270px;
+        }
+
+        .paint-list li {
+            position: relative;
+            float: left;
+            margin: 30px;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+
+        .paint-list .cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        .paint-list li.hover .cover {
+            display: block;
+        }
+
+        .paint-list .cover a {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 10px;
+        }
+
+        .paint-list p {
+            padding: 5px 0;
+        }
+
+        .wrap .btn-link {
+            border: 1px solid #999;
+            border-radius: 5px;
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #fff;
+            font-size: 25px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h2>Oil Painting</h2>
+        <ul class="paint-list clearfix">
+            <li>
+                <div class="cover">
+                    <a href="#">NICE</a>
+                </div>
+                <img src="./imgs/OilPainting-1.jpg" alt="">
+                <p>美丽的油画美丽的油画</p>
+            </li>
+            <li>
+                <div class="cover">
+                    <a href="#">NICE</a>
+                </div>
+                <img src="./imgs/OilPainting-2.jpg" alt="">
+                <p>美丽的油画美丽的油画</p>
+            </li>
+            <li>
+                <div class="cover">
+                    <a href="#">NICE</a>
+                </div>
+                <img src="./imgs/OilPainting-3.jpg" alt="">
+                <p>美丽的油画美丽的油画</p>
+            </li>
+            <li>
+                <div class="cover">
+                    <a href="#">NICE</a>
+                </div>
+                <img src="./imgs/OilPainting-4.jpg" alt="">
+                <p>美丽的油画美丽的油画</p>
+            </li>
+            <li>
+                <div class="cover">
+                    <a href="#">NICE</a>
+                </div>
+                <img src="./imgs/OilPainting-5.jpg" alt="">
+                <p>美丽的油画美丽的油画</p>
+            </li>
+            <li>
+                <div class="cover">
+                    <a href="#">NICE</a>
+                </div>
+                <img src="./imgs/OilPainting-6.jpg" alt="">
+                <p>美丽的油画美丽的油画</p>
+            </li>
+        </ul>
+        <a href="#" class="btn-link">More</a>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
+
+    <script>
+        var products = [{
+            img: './imgs/OilPainting-8.jpg',
+            intro: '美丽的油画'
+        }, {
+            img: './imgs/OilPainting-9.jpg',
+            intro: '美丽的油画'
+        }, {
+            img: './imgs/OilPainting-10.jpg',
+            intro: '美丽的油画'
+        }];
+        function getProdHtml(prod) {
+            var html = '';
+            html += '<li> ';
+            html += '<div class="cover"> <a href="#">NICE</a></div> '
+            html += '<img src="' + prod.img + '" alt="">'
+            html += '<p>' + prod.intro + '</p>'
+            html += '</li>';
+            return html;
+        }
+        $('.btn-link').on('click', function (e) {
+            e.preventDefault();
+            $.each(products, function (idx, prod) {
+                var html = getProdHtml(prod);
+                $('.paint-list').append(html);
+            });
+        });
+        $('.paint-list').on('mouseenter', 'li', function (e) {
+            $(this).addClass('hover');
+        });
+        $('.paint-list').on('mouseleave', 'li', function (e) {
+            $(this).removeClass('hover');
+        });
+
+    </script>
+</body>
+
+</html>
